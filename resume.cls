@@ -15,65 +15,63 @@
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{8pt}
-\setlength{\textheight}{9in}
-\linespread{1.1}
+\setlength{\textheight}{9.5in}
+\setlength{\topmargin}{-.25in}
+\linespread{1}
 
-\newcommand{\@namefont}{\Large\bf\sc}
-\newcommand{\withtab}[2][1in]{%
-    \begin{tabbing}%
-    \hspace{#1}\= \kill%
-    #2%
-    \end{tabbing}%
-    \vspace{-20pt}%
+\newenvironment{header}[1]{
+  \begin{minipage}{0.5\textwidth} \noindent{\LARGE\bf\sc#1\\} \end{minipage} %
+  \hfill %
+  \begin{minipage}{0.5\textwidth} \vspace{-24pt}
+}{
+  \end{minipage}
 }
 
-\newcommand{\horiz}[1]{		% hrules only listen to \hoffset
-    \vskip -12pt
-    \nointerlineskip% so I have this code
-    \moveleft\hoffset\vbox{\rule{\linewidth}{#1}}%
-    \nointerlineskip
+% To define the \infoline command
+\newcommand{\infoline}[2]{%
+  \begin{tabbing}%
+    \hspace{1in}\=\kill%
+    \textbf{#1:} \> #2%
+  \end{tabbing}%
+  \vspace{-20pt}
 }
-
-\renewcommand{\maketitle}{
-    \noindent{\@namefont\@name\\}%
-    \horiz{.25mm}%
-    \vspace{-6pt}%
-}
-
-
-% To define the \address command
-\newcommand{\contact}[2]{\vspace{-12pt}\withtab{\textbf{#1:} \> #2}}
-
-% To define the \name command
-\def\name#1{\@ifundefined{@name}{\def\@name{#1}}{}}
 
 \renewcommand{\section}[1]{
     \vfill
-    \textcolor[HTML]{000000}{\horiz{.75pt}}
-    \vskip -5pt
-    \so{\bf\MakeUppercase{#1}}
-    \vskip -5pt
-    \textcolor[HTML]{888888}{\horiz{.25pt}}
+    \begin{center}
+      \textit{\Large #1}
+    \end{center}
+    \vspace{-8pt}%
+    \par
 }
 
-\newcommand{\withright}[3]{
-    \vspace{-.15in}
-    \begin{tabbing}
-    \hspace{2.3in}\=\hspace{3.2in}\=\kill % set up two tab positions
-    {\bf #1} \> #2 \> #3
-    \end{tabbing}\vspace{-20pt}
+\newcommand{\withright}[4]{
+  \vspace{4pt}
+  \textbf{#1 \hfill #2}\\
+  \textit{#3 \hfill #4}\\
+  \vspace{-10pt} \par
+}
+
 }
 
 \setdefaultleftmargin{0ex}{}{}{}{}{}
 \newenvironment{bullets}{
-    \begin{compactitem}
-        \setlength{\topsep}{0pt}
-        \setlength{\itemsep}{0pt}
-        \setlength{\parskip}{0pt}
-        \setlength{\parsep}{0pt}
-        \setlength{\baselineskip}{0pt}
+  \vspace{-6pt}
+  \begin{compactitem}
+    \setlength{\topsep}{0pt}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    \setlength{\baselineskip}{0pt}
 }{
-    \end{compactitem}
+  \end{compactitem}
+}
+
+\newenvironment{block}[4]{
+\withright{#1}{#2}{#3}{#4}
+\begin{bullets}
+}{
+\end{bullets}
 }
 
 \renewcommand{\st}{\ensuremath{^{\mathrm{st}}} }
