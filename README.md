@@ -1,3 +1,5 @@
+*Note*: I have archived this repository because I no longer use or maintain it. My resume is now in HTML format here: https://pavpanchekha.com/resume.html; I've also expended some effort on making that page have a nice print style, so that I no longer need the TeX at all.
+
 The idea for these classes came from
 http://www.lifeclever.com/give-your-resume-a-face-lift/
 and most of the code is based at least in part on the res.cls class available at
